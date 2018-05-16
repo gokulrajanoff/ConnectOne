@@ -76,12 +76,12 @@
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable/abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xlarge-v4_sf__toolbar_background.xml.flat",
-        "source": "/Users/passionofromance/Connect1/mobile_sdk/SalesforceMobileSDK-Android/libs/SalesforceSDK/build/intermediates/bundles/debug/res/drawable-xlarge-v4/sf__toolbar_background.xml"
-    },
-    {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/layout_design_menu_item_action_area.xml.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/3c723ba1883be615529b07b097d5e206/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xlarge-v4_sf__toolbar_background.xml.flat",
+        "source": "/Users/passionofromance/Connect1/mobile_sdk/SalesforceMobileSDK-Android/libs/SalesforceSDK/build/intermediates/bundles/debug/res/drawable-xlarge-v4/sf__toolbar_background.xml"
     },
     {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/layout-watch-v20_abc_alert_dialog_title_material.xml.flat",
@@ -120,12 +120,12 @@
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-xxhdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/8bb113351056f8be78e42d05ed1f1f2c/res/drawable-hdpi-v4/googleg_standard_color_18.png"
-    },
-    {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable/tooltip_frame_light.xml"
+    },
+    {
+        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/8bb113351056f8be78e42d05ed1f1f2c/res/drawable-hdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -212,24 +212,24 @@
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-xxxhdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
-        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-hdpi-v4/abc_popup_background_mtrl_mult.9.png"
-    },
-    {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
+        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-hdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
     {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-hdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
-        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d375fd32796d8a7e844241841d96b2e2/res/drawable/notification_bg_low.xml"
-    },
-    {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-v21_abc_edit_text_material.xml.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
+        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d375fd32796d8a7e844241841d96b2e2/res/drawable/notification_bg_low.xml"
     },
     {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -248,12 +248,12 @@
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-mdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/layout-sw600dp-v13_design_layout_snackbar.xml.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/3c723ba1883be615529b07b097d5e206/res/layout-sw600dp-v13/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",
@@ -336,16 +336,16 @@
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable/abc_list_selector_holo_light.xml"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
-        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-mdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
+        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
+        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/layout/abc_list_menu_item_layout.xml"
     },
     {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d375fd32796d8a7e844241841d96b2e2/res/drawable-xhdpi-v4/notification_bg_normal.9.png"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
-        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/layout/abc_list_menu_item_layout.xml"
+        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
+        "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/drawable-mdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",

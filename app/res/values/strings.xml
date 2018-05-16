@@ -11,4 +11,5 @@
     <string name="openconnect">OpenConnect</string>
     <string name="title_activity_web_view">WebView</string>
     <string name="logout">LogOut</string>
+    <string name="Logout"><![CDATA[Try to Logout and Login again->]]></string>
 </resources>

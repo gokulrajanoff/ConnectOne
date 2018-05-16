@@ -31,6 +31,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
@@ -52,12 +53,12 @@ import java.util.ArrayList;
 public class MainActivity extends SalesforceActivity {
 
     private RestClient client;
-
+	private TextView errorTextView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		errorTextView = findViewById(R.id.Error);
 		// Setup view
 		setContentView(R.layout.main);
 	}
@@ -150,6 +151,9 @@ public class MainActivity extends SalesforceActivity {
 						Toast.makeText(MainActivity.this,
 								MainActivity.this.getString(SalesforceSDKManager.getInstance().getSalesforceR().stringGenericError(), exception.toString()),
 								Toast.LENGTH_LONG).show();
+						errorTextView.setText(R.string.Logout);
+
+
 					}
 				});
 			}
@@ -159,7 +163,7 @@ public class MainActivity extends SalesforceActivity {
 	private void OpenWebView() {
 		String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
 		System.out.println("community URL"+client.getClientInfo().communityUrl);
-		String url = ""+ communityUrl +"/one/one.app?sid="+ client.getAuthToken() +"";
+		String url = ""+ communityUrl +"/one/one.app?sid="+ client.getAuthToken()+"";
 
         Intent OpenWebView = new Intent(this,ConnectWebViewActivity.class);
         OpenWebView.putExtra("URL",url);
