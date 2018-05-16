@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed May 16 14:37:08 IST 2018
+#Wed May 16 14:44:16 IST 2018
 4.path=lib/arm64-v8a/libsqlcipher.so
 8.set=NATIVE_RESOURCE
 6.path=lib/armeabi/libsqlcipher.so

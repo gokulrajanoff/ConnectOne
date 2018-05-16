@@ -91,33 +91,7 @@ public class MainActivity extends SalesforceActivity {
 		SalesforceSDKManager.getInstance().logout(this);
 	}
 	
-	/**
-	 * Called when "Clear" button is clicked. 
-	 * 
-	 * @param v
-	 */
-
-
-	/**
-	 * Called when "Fetch Contacts" button is clicked
-	 * 
-	 * @param v
-	 * @throws UnsupportedEncodingException 
-	 */
-	public void onFetchContactsClick(View v) throws UnsupportedEncodingException {
-        sendRequest("SELECT Name FROM Contact");
-	}
-
-	/**
-	 * Called when "Fetch Accounts" button is clicked
-	 * 
-	 * @param v
-	 * @throws UnsupportedEncodingException 
-	 */
-	public void onFetchAccountsClick(View v) throws UnsupportedEncodingException {
-		sendRequest("SELECT Name FROM Account");
-	}	
-	
+	//to send Request to salesforce Org
 	private void sendRequest(String soql) throws UnsupportedEncodingException {
 		RestRequest restRequest = RestRequest.getRequestForQuery(ApiVersionStrings.getVersionNumber(this), soql);
 
@@ -129,11 +103,6 @@ public class MainActivity extends SalesforceActivity {
 					@Override
 					public void run() {
 						try {
-//							listAdapter.clear();
-//							JSONArray records = result.asJSONObject().getJSONArray("records");
-//							for (int i = 0; i < records.length(); i++) {
-//								listAdapter.add(records.getJSONObject(i).getString("Name"));
-//							}
 							Toast.makeText(MainActivity.this,"Valid Session",Toast.LENGTH_SHORT).show();
 							OpenWebView();
 						} catch (Exception e) {
