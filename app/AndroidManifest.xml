@@ -104,10 +104,6 @@
             </intent-filter>
         </activity>
         -->
-        <activity
-            android:name=".WebViewActivity"
-            android:label="@string/title_activity_web_view"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ConnectWebViewActivity"
             android:theme="@android:style/Theme.NoTitleBar"></activity>
     </application>
