@@ -26,7 +26,7 @@
 
     <application
         android:name=".MainApplication"
-        android:icon="@drawable/sf__icon"
+        android:icon="@drawable/ic_launcher_background"
         android:label="@string/app_name"
         android:manageSpaceActivity="com.salesforce.androidsdk.ui.ManageSpaceActivity">
 
