@@ -117,7 +117,6 @@
         -->
         <activity
             android:name="com.absyz.ConnectWebViewActivity"
-            android:parentActivityName="com.absyz.MainActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
         <!-- SmartStore Inspector screen -->
         <activity

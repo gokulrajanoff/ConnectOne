@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/153b7150252f5c45ddcd1c85810f7766/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="8a9fd7c97f1d13f97f3b52f9d2e54cd857d5acf9">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/119b71c833da04d296206c7353460b5e/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="71d380aeac037e63bab7bda2ba211777e16a2f42">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/4f28cdb97a678f8b00d23900b25022ac/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="88c68e5ef7c5ace393d014c9ec5fe736b1ca55cf">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d375fd32796d8a7e844241841d96b2e2/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="23dcb4803d3103bde3f3f5db978a726338fe49ae">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/5a7d2fb0295c29f3ae11ab41e38a1cca/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="ec657bb192b20229696216bf233779b16bf75a54">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/348e19c56d7ce004d82344b21347a570/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="1fd3ceac7f415975323d52c6c6057db409a907f6">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="d968b9bd0011800e0d333d1571b8d34bcb8a0b6e">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/modules-2/files-2.1/com.android.support.constraint/constraint-layout-solver/1.1.0/931532e953a477f876f2de18c2e7f16eee01078f/constraint-layout-solver-1.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="931532e953a477f876f2de18c2e7f16eee01078f">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/c0167a99ca2bcb2362716ef0714a87a1/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="4d2b8ad415048e88b41ba4afcaafe36150e69b8c">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/3bc3725b55c3de908c15b42fa8747f27/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="c9a721adcd7dbae7a197b0ef81102336539f63ff">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/7983c59b5ab561710c205f61dca9bcb0/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="7038c6d960d3fe26fd41bc509f256c9692d886ce">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.1.0/edf3f7bfb84a7521d0599efa3b0113a0ee90f85/common-1.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="0edf3f7bfb84a7521d0599efa3b0113a0ee90f85">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/Connect1/mobile_sdk/SalesforceMobileSDK-Android/libs/SalesforceSDK/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="76ca2df2d76a5fd262866028425fa00893e07ee7">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/4e22dfcbc3d18dea7925bd7540702e27/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="e2bbe48deed35056023eed2cdc0cc92e5c7d3617">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.1.0/8007981f7d7540d89cd18471b8e5dcd2b4f99167/common-1.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="8007981f7d7540d89cd18471b8e5dcd2b4f99167">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/26b082bee8ee82fde6294b1918156355/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="874f1143c11f5d38533efe512bf913e3e847e7df">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/71281158006a9958e1029858cab08178/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="3304d33470ff64cf83bce9189ff3648a42eb2aa7">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/Connect1/mobile_sdk/SalesforceMobileSDK-Android/libs/SmartStore/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="70c543468ac73fde1f28c68a9f3d299e78909b31">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/86b2b423a35f12f303ee10e723672f1d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="2feadd535770271ca57b7b431f42151aa4af324a">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/3c723ba1883be615529b07b097d5e206/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="ae6d33f37143b08cd8c477c9e348d61ef7ed7eba">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/27.1.1/39ded76b5e1ce1c5b2688e1d25cdc20ecee32007/support-annotations-27.1.1.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="39ded76b5e1ce1c5b2688e1d25cdc20ecee32007">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/Connect1/mobile_sdk/SalesforceMobileSDK-Android/libs/SmartSync/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="abf395a56cb5f970e53bb1ea53a1e8ff002b85f6">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/5c25ccd99de4cdbaad1400132b2ec49e/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="f46121a7c3b3ba958fc27c39447ae205be23ac4a">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/passionofromance/Connect1/mobile_sdk/SalesforceMobileSDK-Android/libs/SalesforceAnalytics/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="27.0.3"
+        sha1="d9f503f2f04b97753b9f00776c8e2d98ae5c05db">
+        <dex dex="/Users/passionofromance/Connect1/app/build/intermediates/transforms/preDex/release/40.jar" />
+    </item>
+
+</items>

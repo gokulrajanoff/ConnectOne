@@ -28,12 +28,16 @@ package com.absyz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -43,9 +47,15 @@ import com.salesforce.androidsdk.rest.RestResponse;
 import com.salesforce.androidsdk.ui.SalesforceActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * Main activity
@@ -54,7 +64,11 @@ public class MainActivity extends SalesforceActivity {
 
     private RestClient client;
 	private TextView errorTextView;
-	
+	private String AskToLogout="Try To Login Out And Login Again";
+	private String URL="https://test.salesforce.com/services/oauth2/token";
+	private String Client_ID ="3MVG99S6MzYiT5k9Zi_aoc.dquXJmkC3UIOksfnVzO5qn9KqIJ3KfkOk0WMZr9uqDjeCEEx4bd43jhObsZPkn";
+	private String Client_Secret ="8240518122990865023";
+	private String TAG = "CLIMA";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -91,60 +105,56 @@ public class MainActivity extends SalesforceActivity {
 		SalesforceSDKManager.getInstance().logout(this);
 	}
 	
-	//to send Request to salesforce Org
-	private void sendRequest(String soql) throws UnsupportedEncodingException {
-		RestRequest restRequest = RestRequest.getRequestForQuery(ApiVersionStrings.getVersionNumber(this), soql);
 
-		client.sendAsync(restRequest, new AsyncRequestCallback() {
+
+	public void CheckForConnection(View view) {
+        Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
+		AsyncHttpClient Aclient = new AsyncHttpClient();
+		RequestParams params = new RequestParams();
+		params.add("grant_type","refresh_token");
+		params.add("refresh_token",client.getRefreshToken());
+		params.add("client_id",Client_ID);
+		params.add("client_secret",Client_Secret);
+
+		Aclient.post(URL,params,new JsonHttpResponseHandler(){
 			@Override
-			public void onSuccess(RestRequest request, final RestResponse result) {
-				result.consumeQuietly(); // consume before going back to main thread
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							Toast.makeText(MainActivity.this,"Valid Session",Toast.LENGTH_SHORT).show();
-							OpenWebView();
-						} catch (Exception e) {
-							onError(e);
-						}
-					}
-				});
-			}
-			
+			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+				Log.d("HTTP", "OnSuccess: "+statusCode+"Header"+headers+"Response"+response.toString());
+                try {
+                    Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
+                    String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
+                    System.out.println("community URL"+client.getClientInfo().communityUrl);
+                    Log.d(TAG, "\nonSuccess: New Access Token"+response.get("access_token"));
+                    String url = ""+ communityUrl +"/one/one.app?sid="+ response.get("access_token")+"";
+                    OpenWebView(url);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
 			@Override
-			public void onError(final Exception exception) {
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						Toast.makeText(MainActivity.this,
-								MainActivity.this.getString(SalesforceSDKManager.getInstance().getSalesforceR().stringGenericError(), exception.toString()),
-								Toast.LENGTH_LONG).show();
-						errorTextView.setText(R.string.Logout);
+			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
 
-
-					}
-				});
+				Log.d("HTTP", "OnFailure: "+statusCode+"Header"+headers+"Response"+errorResponse.toString()+"Throwbable"+throwable.getMessage());
+			    Toast.makeText(getApplicationContext(),throwable.getMessage(),Toast.LENGTH_SHORT).show();
+                LoginError();
 			}
+
 		});
+
 	}
 
-	private void OpenWebView() {
-		String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
-		System.out.println("community URL"+client.getClientInfo().communityUrl);
-		String url = ""+ communityUrl +"/one/one.app?sid="+ client.getAuthToken()+"";
+    private void LoginError() {
+        errorTextView=findViewById(R.id.Error);
+        errorTextView.setText(AskToLogout);
+    }
 
+    public void OpenWebView(String url) {
         Intent OpenWebView = new Intent(this,ConnectWebViewActivity.class);
         OpenWebView.putExtra("URL",url);
+        Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
         startActivity(OpenWebView);
 
 	}
 
-	public void CheckForConnection(View view) {
-		try {
-			sendRequest("SELECT Name FROM Account");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-	}
 }

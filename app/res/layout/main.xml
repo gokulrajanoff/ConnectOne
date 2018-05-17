@@ -9,12 +9,12 @@
 
 	<Button
 		android:id="@+id/OpenConnectButton"
+		style="@style/Widget.AppCompat.Button"
 		android:layout_width="0dp"
 		android:layout_height="48dp"
 		android:layout_marginBottom="8dp"
 		android:layout_marginEnd="8dp"
 		android:layout_marginStart="8dp"
-		style="@style/Widget.AppCompat.Button"
 		android:layout_marginTop="8dp"
 		android:background="@color/common_google_signin_btn_text_dark_default"
 		android:onClick="CheckForConnection"
@@ -45,6 +45,9 @@
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
 		android:layout_marginTop="16dp"
+		android:textColor="@color/common_google_signin_btn_text_dark_focused"
+		android:textSize="@dimen/sf__passcode_forgot_margin_top"
+		android:textStyle="bold"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
