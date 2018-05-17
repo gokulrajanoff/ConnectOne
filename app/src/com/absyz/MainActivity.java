@@ -30,6 +30,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -65,16 +67,19 @@ public class MainActivity extends SalesforceActivity {
     private RestClient client;
 	private TextView errorTextView;
 	private String AskToLogout="Try To Login Out And Login Again";
+	//change this URL if we are moving to production
 	private String URL="https://test.salesforce.com/services/oauth2/token";
 	private String Client_ID ="3MVG99S6MzYiT5k9Zi_aoc.dquXJmkC3UIOksfnVzO5qn9KqIJ3KfkOk0WMZr9uqDjeCEEx4bd43jhObsZPkn";
 	private String Client_Secret ="8240518122990865023";
 	private String TAG = "CLIMA";
+	private WebView ConnectWebView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		errorTextView = findViewById(R.id.Error);
+
 		// Setup view
 		setContentView(R.layout.main);
+
 	}
 	
 	@Override 
@@ -82,18 +87,17 @@ public class MainActivity extends SalesforceActivity {
 		// Hide everything until we are logged in
 		findViewById(R.id.root).setVisibility(View.INVISIBLE);
 
-
-		
 		super.onResume();
 	}		
 	
 	@Override
 	public void onResume(RestClient client) {
         // Keeping reference to rest client
-        this.client = client; 
-
+        this.client = client;
+        checkConn();
 		// Show everything
-		findViewById(R.id.root).setVisibility(View.VISIBLE);
+        findViewById(R.id.ConnectWebViews).setVisibility(View.INVISIBLE);
+		findViewById(R.id.root).setVisibility(View.INVISIBLE);
 	}
 
 	/**
@@ -104,8 +108,58 @@ public class MainActivity extends SalesforceActivity {
 	public void onLogoutClick(View v) {
 		SalesforceSDKManager.getInstance().logout(this);
 	}
+	public void Logout()
+    {
+        SalesforceSDKManager.getInstance().logout(this);
+    }
 	
+public void checkConn()
+{
+    Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
+    AsyncHttpClient Aclient = new AsyncHttpClient();
+    RequestParams params = new RequestParams();
+    params.add("grant_type","refresh_token");
+    params.add("refresh_token",client.getRefreshToken());
+    params.add("client_id",Client_ID);
+    params.add("client_secret",Client_Secret);
 
+    Aclient.post(URL,params,new JsonHttpResponseHandler(){
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+            Log.d("HTTP", "OnSuccess: "+statusCode+"Header"+headers+"Response"+response.toString());
+            try {
+                Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
+                String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
+                System.out.println("community URL"+client.getClientInfo().communityUrl);
+                Log.d(TAG, "\nonSuccess: New Access Token"+response.get("access_token"));
+                String url = ""+ communityUrl +"/one/one.app?sid="+ response.get("access_token")+"";
+                findViewById(R.id.root).setVisibility(View.VISIBLE);
+                ConnectWebView=findViewById(R.id.ConnectWebViews);
+                ConnectWebView.setWebViewClient(new WebViewClient());
+                ConnectWebView.getSettings().setJavaScriptEnabled(true);
+//
+                Log.d(TAG, "onResume: first time loading");
+                ConnectWebView.loadUrl(url);
+                findViewById(R.id.ConnectWebViews).setVisibility(View.VISIBLE);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        @Override
+        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+
+            Log.d("HTTP", "OnFailure: "+statusCode+"Header"+headers+"Response"+errorResponse.toString()+"Throwbable"+throwable.getMessage());
+            Toast.makeText(getApplicationContext(),throwable.getMessage(),Toast.LENGTH_SHORT).show();
+           // LoginError();
+            Logout();
+
+        }
+
+    });
+
+}
 
 	public void CheckForConnection(View view) {
         Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
@@ -127,7 +181,7 @@ public class MainActivity extends SalesforceActivity {
                     System.out.println("community URL"+client.getClientInfo().communityUrl);
                     Log.d(TAG, "\nonSuccess: New Access Token"+response.get("access_token"));
                     String url = ""+ communityUrl +"/one/one.app?sid="+ response.get("access_token")+"";
-                    OpenWebView(url);
+//                    OpenWebView(url);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -137,24 +191,24 @@ public class MainActivity extends SalesforceActivity {
 
 				Log.d("HTTP", "OnFailure: "+statusCode+"Header"+headers+"Response"+errorResponse.toString()+"Throwbable"+throwable.getMessage());
 			    Toast.makeText(getApplicationContext(),throwable.getMessage(),Toast.LENGTH_SHORT).show();
-                LoginError();
+                //LoginError();
 			}
 
 		});
 
 	}
 
-    private void LoginError() {
-        errorTextView=findViewById(R.id.Error);
-        errorTextView.setText(AskToLogout);
-    }
+//    private void LoginError() {
+//        errorTextView=findViewById(R.id.Error);
+//        errorTextView.setText(AskToLogout);
+//    }
 
-    public void OpenWebView(String url) {
-        Intent OpenWebView = new Intent(this,ConnectWebViewActivity.class);
-        OpenWebView.putExtra("URL",url);
-        Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
-        startActivity(OpenWebView);
-
-	}
+//    public void OpenWebView(String url) {
+//        Intent OpenWebView = new Intent(this,ConnectWebViewActivity.class);
+//        OpenWebView.putExtra("URL",url);
+//        Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
+//        startActivity(OpenWebView);
+//
+//	}
 
 }

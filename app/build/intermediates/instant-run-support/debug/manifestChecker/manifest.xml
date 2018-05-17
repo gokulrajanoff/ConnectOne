@@ -115,9 +115,6 @@
             </intent-filter>
         </activity>
         -->
-        <activity
-            android:name="com.absyz.ConnectWebViewActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
         <!-- SmartStore Inspector screen -->
         <activity
             android:name="com.salesforce.androidsdk.smartstore.ui.SmartStoreInspectorActivity"

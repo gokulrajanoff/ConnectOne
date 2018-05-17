@@ -1916,10 +1916,6 @@
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/3c723ba1883be615529b07b097d5e206/res/layout/design_navigation_menu_item.xml"
     },
     {
-        "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/layout_activity_connect_web_view.xml.flat",
-        "source": "/Users/passionofromance/Connect1/app/res/layout/activity_connect_web_view.xml"
-    },
-    {
         "merged": "/Users/passionofromance/Connect1/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
         "source": "/Users/passionofromance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/96165583ffe574c8741910905441ab3f/res/color/abc_tint_btn_checkable.xml"
     },
