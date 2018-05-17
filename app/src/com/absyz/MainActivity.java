@@ -136,12 +136,38 @@ public void checkConn()
                 String url = ""+ communityUrl +"/one/one.app?sid="+ response.get("access_token")+"";
                 findViewById(R.id.root).setVisibility(View.VISIBLE);
                 ConnectWebView=findViewById(R.id.ConnectWebViews);
-                ConnectWebView.setWebViewClient(new WebViewClient());
+                ConnectWebView.setWebViewClient(new WebViewClient(){
+
+
+                    @Override
+                    public void onPageFinished(WebView view, String url) {
+                        Log.d("WebView", "your current url when webpage loading.. finish" + url);
+                        if(url.contains("login"))
+                        {
+                            Toast.makeText(getApplicationContext(),"You Logged Out the Session Manually",Toast.LENGTH_LONG).show();
+                            Logout();
+                        }
+                        super.onPageFinished(view, url);
+                    }
+
+                    @Override
+                    public void onLoadResource(WebView view, String url) {
+                        // TODO Auto-generated method stub
+                        super.onLoadResource(view, url);
+                    }
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        System.out.println("when you click on any interlink on webview that time you got url :-" + url);
+                        return super.shouldOverrideUrlLoading(view, url);
+                    }
+
+                });
                 ConnectWebView.getSettings().setJavaScriptEnabled(true);
 //
                 Log.d(TAG, "onResume: first time loading");
                 ConnectWebView.loadUrl(url);
                 findViewById(R.id.ConnectWebViews).setVisibility(View.VISIBLE);
+                System.out.println("URL:"+ConnectWebView.getUrl());
 
             } catch (JSONException e) {
                 e.printStackTrace();
