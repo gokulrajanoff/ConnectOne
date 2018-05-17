@@ -36,9 +36,10 @@
     <application
         android:name="com.absyz.MainApplication"
         android:debuggable="true"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:manageSpaceActivity="com.salesforce.androidsdk.ui.ManageSpaceActivity" >
+        android:manageSpaceActivity="com.salesforce.androidsdk.ui.ManageSpaceActivity"
+        android:testOnly="true" >
 
         <!-- Launcher screen -->
         <activity

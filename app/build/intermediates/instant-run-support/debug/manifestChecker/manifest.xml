@@ -36,7 +36,7 @@
     <application
         android:name="com.absyz.MainApplication"
         android:debuggable="true"
-        android:icon="@drawable/sf__icon"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:manageSpaceActivity="com.salesforce.androidsdk.ui.ManageSpaceActivity"
         android:testOnly="true" >

@@ -1,4 +1,4 @@
-#Thu May 17 17:05:00 IST 2018
-base.0=/Users/passionofromance/Connect1/app/build/intermediates/transforms/dexMerger/debug/6
+#Thu May 17 17:26:27 IST 2018
+base.0=/Users/passionofromance/Connect1/app/build/intermediates/transforms/dexMerger/debug/25
 path.0=classes.dex
 renamed.0=classes.dex

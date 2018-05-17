@@ -19,25 +19,25 @@ public final class R {
         public static final int scopeUris = 0x7f040131;
     }
     public static final class color {
-        public static final int common_google_signin_btn_text_dark = 0x7f060026;
-        public static final int common_google_signin_btn_text_dark_default = 0x7f060027;
-        public static final int common_google_signin_btn_text_dark_disabled = 0x7f060028;
-        public static final int common_google_signin_btn_text_dark_focused = 0x7f060029;
-        public static final int common_google_signin_btn_text_dark_pressed = 0x7f06002a;
-        public static final int common_google_signin_btn_text_light = 0x7f06002b;
-        public static final int common_google_signin_btn_text_light_default = 0x7f06002c;
-        public static final int common_google_signin_btn_text_light_disabled = 0x7f06002d;
-        public static final int common_google_signin_btn_text_light_focused = 0x7f06002e;
-        public static final int common_google_signin_btn_text_light_pressed = 0x7f06002f;
-        public static final int common_google_signin_btn_tint = 0x7f060030;
-        public static final int sf__chrome_nav_bar_azure = 0x7f06006a;
-        public static final int sf__forgot_passcode_text = 0x7f06006b;
-        public static final int sf__hint_color = 0x7f06006c;
-        public static final int sf__passcode_bg = 0x7f060072;
-        public static final int sf__passcode_error_text = 0x7f060073;
-        public static final int sf__passcode_layout_bg = 0x7f060074;
-        public static final int sf__success_color = 0x7f060075;
-        public static final int sf__warning_color = 0x7f060076;
+        public static final int common_google_signin_btn_text_dark = 0x7f060027;
+        public static final int common_google_signin_btn_text_dark_default = 0x7f060028;
+        public static final int common_google_signin_btn_text_dark_disabled = 0x7f060029;
+        public static final int common_google_signin_btn_text_dark_focused = 0x7f06002a;
+        public static final int common_google_signin_btn_text_dark_pressed = 0x7f06002b;
+        public static final int common_google_signin_btn_text_light = 0x7f06002c;
+        public static final int common_google_signin_btn_text_light_default = 0x7f06002d;
+        public static final int common_google_signin_btn_text_light_disabled = 0x7f06002e;
+        public static final int common_google_signin_btn_text_light_focused = 0x7f06002f;
+        public static final int common_google_signin_btn_text_light_pressed = 0x7f060030;
+        public static final int common_google_signin_btn_tint = 0x7f060031;
+        public static final int sf__chrome_nav_bar_azure = 0x7f06006c;
+        public static final int sf__forgot_passcode_text = 0x7f06006d;
+        public static final int sf__hint_color = 0x7f06006e;
+        public static final int sf__passcode_bg = 0x7f060074;
+        public static final int sf__passcode_error_text = 0x7f060075;
+        public static final int sf__passcode_layout_bg = 0x7f060076;
+        public static final int sf__success_color = 0x7f060077;
+        public static final int sf__warning_color = 0x7f060078;
     }
     public static final class dimen {
         public static final int sf__button_font_size = 0x7f070095;
