@@ -1,0 +1,27 @@
+#Internal package file, do not edit.
+#Thu May 17 17:10:40 IST 2018
+2.base=/Users/passionofromance/Connect1/app/build/intermediates/transforms/mergeJniLibs/debug/0
+5.set=NATIVE_RESOURCE
+0.path=lib/x86_64/libsqlcipher.so
+2.baseType=DIRECTORY
+3.base=/Users/passionofromance/Connect1/app/build/intermediates/transforms/mergeJniLibs/debug/0
+2.set=NATIVE_RESOURCE
+1.path=lib/arm64-v8a/libsqlcipher.so
+4.base=/Users/passionofromance/Connect1/app/build/intermediates/transforms/dexMerger/debug/18
+count=6
+5.baseType=DIRECTORY
+2.path=lib/armeabi-v7a/libsqlcipher.so
+5.base=/Users/passionofromance/Connect1/app/build/intermediates/transforms/mergeJniLibs/debug/0
+4.set=DEX
+3.path=lib/armeabi/libsqlcipher.so
+3.baseType=DIRECTORY
+1.set=NATIVE_RESOURCE
+4.path=classes.dex
+1.baseType=DIRECTORY
+5.path=lib/x86/libsqlcipher.so
+0.base=/Users/passionofromance/Connect1/app/build/intermediates/transforms/mergeJniLibs/debug/0
+0.baseType=DIRECTORY
+3.set=NATIVE_RESOURCE
+1.base=/Users/passionofromance/Connect1/app/build/intermediates/transforms/mergeJniLibs/debug/0
+4.baseType=DIRECTORY
+0.set=NATIVE_RESOURCE
