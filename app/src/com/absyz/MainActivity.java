@@ -27,6 +27,7 @@
 package com.absyz;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,18 +39,22 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.salesforce.androidsdk.analytics.AnalyticsPublisherService;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
+import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestClient.AsyncRequestCallback;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
+import com.salesforce.androidsdk.smartsync.app.SmartSyncSDKManager;
 import com.salesforce.androidsdk.ui.SalesforceActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -75,6 +80,7 @@ public class MainActivity extends SalesforceActivity {
 		errorTextView = findViewById(R.id.Error);
 		// Setup view
 		setContentView(R.layout.main);
+		Log.d(TAG, "onCreate: Invalidate the current Token");
 	}
 	
 	@Override 
@@ -90,8 +96,10 @@ public class MainActivity extends SalesforceActivity {
 	@Override
 	public void onResume(RestClient client) {
         // Keeping reference to rest client
-        this.client = client; 
+        this.client = client;
+		System.out.println("OnResume "+client.getAuthToken());
 
+		//cm.peekRestClient();
 		// Show everything
 		findViewById(R.id.root).setVisibility(View.VISIBLE);
 	}
@@ -104,8 +112,35 @@ public class MainActivity extends SalesforceActivity {
 	public void onLogoutClick(View v) {
 		SalesforceSDKManager.getInstance().logout(this);
 	}
-	
 
+	public class RefreshToken extends AsyncTask<String,Void,String>
+	{
+
+		@Override
+		protected String doInBackground(String... strings) {
+
+			RestClient.OAuthRefreshInterceptor oAuth = new RestClient.OAuthRefreshInterceptor(client.getClientInfo(), client.getAuthToken(),client.getOAuthRefreshInterceptor().getAuthTokenProvider());
+			try {
+				oAuth.RefreshTokenManually();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+	}
+	public void Testing(View view)
+	{
+
+				System.out.println("Old Token "+client.getAuthToken());
+				new RefreshToken().execute("");
+				BeforeOpeningWebView();
+
+				// UI code goes here
+
+		System.out.println("New Token "+client.getAuthToken());
+
+		}
 
 	public void CheckForConnection(View view) {
         Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
@@ -148,6 +183,14 @@ public class MainActivity extends SalesforceActivity {
         errorTextView=findViewById(R.id.Error);
         errorTextView.setText(AskToLogout);
     }
+    public void BeforeOpeningWebView()
+	{
+		String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
+		System.out.println("community URL"+client.getClientInfo().communityUrl);
+		Log.d(TAG, "\nonSuccess: New Access Token"+client.getAuthToken());
+		String url = ""+ communityUrl +"/one/one.app?sid="+ client.getAuthToken()+"";
+		OpenWebView(url);
+	}
 
     public void OpenWebView(String url) {
         Intent OpenWebView = new Intent(this,ConnectWebViewActivity.class);
