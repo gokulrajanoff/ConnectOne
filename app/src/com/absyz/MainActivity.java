@@ -98,6 +98,8 @@ public class MainActivity extends SalesforceActivity {
 		// Show everything
         findViewById(R.id.ConnectWebViews).setVisibility(View.INVISIBLE);
 		findViewById(R.id.root).setVisibility(View.INVISIBLE);
+		SalesforceSDKManager inst = SalesforceSDKManager.getInstance();
+
 	}
 
 	/**
