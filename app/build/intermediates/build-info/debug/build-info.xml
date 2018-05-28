@@ -5,41 +5,41 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
+    ir-eligibility="METHOD_DELETED"
     plugin-version="3.0.1"
-    timestamp="1527504149802"
+    timestamp="1527533847535"
     token="-6684872436698210939"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="656" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="29" />
+        duration="43" />
     <task
         name="verifier"
-        duration="31" />
+        duration="5" />
 
     <artifact
-        location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1527502707906"
+        timestamp="1527532994513"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
         <artifact
             location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
             location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
             location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
@@ -71,29 +71,11 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1527503627058"
+        ir-eligibility="METHOD_DELETED"
+        timestamp="1527533847535"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1527504015216"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1527504149802"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/passionofromance/Connect1/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
     </build>
 

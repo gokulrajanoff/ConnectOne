@@ -26,14 +26,13 @@
  */
 package com.absyz;
 
-import android.content.Intent;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,29 +42,23 @@ import com.loopj.android.http.RequestParams;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
 import com.salesforce.androidsdk.rest.RestClient;
-import com.salesforce.androidsdk.rest.RestClient.AsyncRequestCallback;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 import com.salesforce.androidsdk.ui.SalesforceActivity;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
-
-import static android.support.constraint.Constraints.TAG;
 
 /**
  * Main activity
  */
 public class MainActivity extends SalesforceActivity {
 
-    private RestClient client;
+    private RestClient clientRest;
 	private TextView errorTextView;
 	private String AskToLogout="Try To Login Out And Login Again";
 	//change this URL if we are moving to production
@@ -94,24 +87,35 @@ public class MainActivity extends SalesforceActivity {
 	
 	@Override
 	public void onResume(RestClient client) {
+        this.clientRest = client;
         // Keeping reference to rest client
-        this.client = client;
-        try {
-            client.getOAuthRefreshInterceptor().RefreshTokenManually();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        authToken=client.getOAuthRefreshInterceptor().getAuthToken();
-        System.out.print("New auth TKN:*"+authToken);
-        checkConn();
-		// Show everything
-        findViewById(R.id.ConnectWebViews).setVisibility(View.INVISIBLE);
-		findViewById(R.id.root).setVisibility(View.INVISIBLE);
-		SalesforceSDKManager inst = SalesforceSDKManager.getInstance();
+        Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
+        new RefreshToken().execute();
 
 	}
 
-	/**
+    private void getValidAccessToken() {
+        final Context context = SalesforceSDKManager.getInstance().getAppContext();
+        RestResponse restResponse = null;
+        Exception exception ;
+
+        try {
+            restResponse = clientRest.sendSync(RestRequest.getRequestForResources(
+                    ApiVersionStrings.getVersionNumber(context)));
+        } catch (IOException e) {
+            exception = e;
+            Log.d(TAG, "getValidAccessToken: Exception"+exception);
+        } finally {
+            if (restResponse == null || !restResponse.isSuccess()) {
+                Log.d(TAG, "getValidAccessToken: Invalid REST client");
+            } else {
+
+            }
+        }
+
+    }
+
+    /**
 	 * Called when "Logout" button is clicked. 
 	 * 
 	 * @param v
@@ -123,14 +127,76 @@ public class MainActivity extends SalesforceActivity {
     {
         SalesforceSDKManager.getInstance().logout(this);
     }
+
+    class RefreshToken extends AsyncTask<String, Void,Void> {
+
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            getValidAccessToken();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+            super.onPostExecute(aVoid);
+            authToken = clientRest.getAuthToken();
+            OpenWebView(authToken);
+        }
+
+
+    }
+public void OpenWebView(String authToken)  {
+
+    Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
+    String communityUrl= String.valueOf(clientRest.getClientInfo().communityUrl);
+    System.out.println("community URL"+clientRest.getClientInfo().communityUrl);
+    String url = ""+ communityUrl +"/one/one.app?sid="+ authToken+"";
+    findViewById(R.id.root).setVisibility(View.VISIBLE);
+    ConnectWebView=findViewById(R.id.ConnectWebViews);
+    ConnectWebView.setWebViewClient(new WebViewClient(){
+
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            Log.d("WebView", "your current url when webpage loading.. finish" + url);
+            if(url.contains("login"))
+            {
+                Toast.makeText(getApplicationContext(),"You Logged Out the Session Manually",Toast.LENGTH_LONG).show();
+                Logout();
+            }
+            super.onPageFinished(view, url);
+        }
+
+        @Override
+        public void onLoadResource(WebView view, String url) {
+            // TODO Auto-generated method stub
+            super.onLoadResource(view, url);
+        }
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            System.out.println("when you click on any interlink on webview that time you got url :-" + url);
+            return super.shouldOverrideUrlLoading(view, url);
+        }
+
+    });
+    ConnectWebView.getSettings().setJavaScriptEnabled(true);
+//
+    Log.d(TAG, "onResume: first time loading");
+    ConnectWebView.loadUrl(url);
+    findViewById(R.id.ConnectWebViews).setVisibility(View.VISIBLE);
+    System.out.println("URL:"+ConnectWebView.getUrl());
+}
 	
 public void checkConn()
 {
-    Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
+    Log.d(TAG, "\n CheckForConnection: 1 Access token"+clientRest.getAuthToken());
+    Log.d(TAG, "checkConn: authTOken:"+authToken+"\n");
     AsyncHttpClient Aclient = new AsyncHttpClient();
     RequestParams params = new RequestParams();
     params.add("grant_type","refresh_token");
-    params.add("refresh_token",client.getRefreshToken());
+    params.add("refresh_token",clientRest.getRefreshToken());
     params.add("client_id",Client_ID);
     params.add("client_secret",Client_Secret);
 
@@ -139,51 +205,11 @@ public void checkConn()
         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
             Log.d("HTTP", "OnSuccess: "+statusCode+"Header"+headers+"Response"+response.toString());
-            try {
-                Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
-                String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
-                System.out.println("community URL"+client.getClientInfo().communityUrl);
-                Log.d(TAG, "\nonSuccess: New Access Token"+response.get("access_token"));
-                String url = ""+ communityUrl +"/one/one.app?sid="+ authToken+"";
-                findViewById(R.id.root).setVisibility(View.VISIBLE);
-                ConnectWebView=findViewById(R.id.ConnectWebViews);
-                ConnectWebView.setWebViewClient(new WebViewClient(){
 
-
-                    @Override
-                    public void onPageFinished(WebView view, String url) {
-                        Log.d("WebView", "your current url when webpage loading.. finish" + url);
-                        if(url.contains("login"))
-                        {
-                            Toast.makeText(getApplicationContext(),"You Logged Out the Session Manually",Toast.LENGTH_LONG).show();
-                            Logout();
-                        }
-                        super.onPageFinished(view, url);
-                    }
-
-                    @Override
-                    public void onLoadResource(WebView view, String url) {
-                        // TODO Auto-generated method stub
-                        super.onLoadResource(view, url);
-                    }
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        System.out.println("when you click on any interlink on webview that time you got url :-" + url);
-                        return super.shouldOverrideUrlLoading(view, url);
-                    }
-
-                });
-                ConnectWebView.getSettings().setJavaScriptEnabled(true);
-//
-                Log.d(TAG, "onResume: first time loading");
-                ConnectWebView.loadUrl(url);
-                findViewById(R.id.ConnectWebViews).setVisibility(View.VISIBLE);
-                System.out.println("URL:"+ConnectWebView.getUrl());
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
         }
+
+
+
         @Override
         public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
 
@@ -199,11 +225,11 @@ public void checkConn()
 }
 
 	public void CheckForConnection(View view) {
-        Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
+        Log.d(TAG, "\n CheckForConnection: Old Access token"+clientRest.getAuthToken());
 		AsyncHttpClient Aclient = new AsyncHttpClient();
 		RequestParams params = new RequestParams();
 		params.add("grant_type","refresh_token");
-		params.add("refresh_token",client.getRefreshToken());
+		params.add("refresh_token",clientRest.getRefreshToken());
 		params.add("client_id",Client_ID);
 		params.add("client_secret",Client_Secret);
 
@@ -214,8 +240,8 @@ public void checkConn()
 				Log.d("HTTP", "OnSuccess: "+statusCode+"Header"+headers+"Response"+response.toString());
                 try {
                     Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_SHORT).show();
-                    String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
-                    System.out.println("community URL"+client.getClientInfo().communityUrl);
+                    String communityUrl= String.valueOf(clientRest.getClientInfo().communityUrl);
+                    System.out.println("community URL"+clientRest.getClientInfo().communityUrl);
                     Log.d(TAG, "\nonSuccess: New Access Token"+response.get("access_token"));
                     String url = ""+ communityUrl +"/one/one.app?sid="+ response.get("access_token")+"";
 //                    OpenWebView(url);
