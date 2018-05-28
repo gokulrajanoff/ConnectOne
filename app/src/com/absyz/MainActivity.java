@@ -52,6 +52,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -73,6 +74,7 @@ public class MainActivity extends SalesforceActivity {
 	private String Client_Secret ="8240518122990865023";
 	private String TAG = "CLIMA";
 	private WebView ConnectWebView;
+	private String authToken;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -94,6 +96,13 @@ public class MainActivity extends SalesforceActivity {
 	public void onResume(RestClient client) {
         // Keeping reference to rest client
         this.client = client;
+        try {
+            client.getOAuthRefreshInterceptor().RefreshTokenManually();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        authToken=client.getOAuthRefreshInterceptor().getAuthToken();
+        System.out.print("New auth TKN:*"+authToken);
         checkConn();
 		// Show everything
         findViewById(R.id.ConnectWebViews).setVisibility(View.INVISIBLE);
@@ -135,7 +144,7 @@ public void checkConn()
                 String communityUrl= String.valueOf(client.getClientInfo().communityUrl);
                 System.out.println("community URL"+client.getClientInfo().communityUrl);
                 Log.d(TAG, "\nonSuccess: New Access Token"+response.get("access_token"));
-                String url = ""+ communityUrl +"/one/one.app?sid="+ response.get("access_token")+"";
+                String url = ""+ communityUrl +"/one/one.app?sid="+ authToken+"";
                 findViewById(R.id.root).setVisibility(View.VISIBLE);
                 ConnectWebView=findViewById(R.id.ConnectWebViews);
                 ConnectWebView.setWebViewClient(new WebViewClient(){
