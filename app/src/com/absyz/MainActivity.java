@@ -40,7 +40,10 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
+import com.salesforce.androidsdk.auth.HttpAccess;
+import com.salesforce.androidsdk.auth.OAuth2;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
+import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
@@ -50,8 +53,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
+
+import static com.salesforce.androidsdk.auth.OAuth2.*;
 
 /**
  * Main activity
@@ -81,20 +87,29 @@ public class MainActivity extends SalesforceActivity {
 	public void onResume() {
 		// Hide everything until we are logged in
 		findViewById(R.id.root).setVisibility(View.INVISIBLE);
-
 		super.onResume();
 	}		
 	
 	@Override
 	public void onResume(RestClient client) {
         this.clientRest = client;
-        // Keeping reference to rest client
-        Log.d(TAG, "\n CheckForConnection: Old Access token"+client.getAuthToken());
+
         new RefreshToken().execute();
 
 	}
+	public void refresh(){
+
+	    System.out.print("old token "+clientRest.getAuthToken());
+        System.out.print("old token auth token "+authToken);
+
+        ClientManager.AccMgrAuthTokenProvider acc = new ClientManager.AccMgrAuthTokenProvider(SalesforceSDKManager.getInstance().getClientManager(),clientRest.getClientInfo().communityUrl,clientRest.getAuthToken(),clientRest.getRefreshToken());
+        String newAuth = acc.getNewAuthToken();
+        authToken=newAuth;
+        System.out.print("\nnew token "+authToken);
+    }
 
     private void getValidAccessToken() {
+
         final Context context = SalesforceSDKManager.getInstance().getAppContext();
         RestResponse restResponse = null;
         Exception exception ;
@@ -102,6 +117,7 @@ public class MainActivity extends SalesforceActivity {
         try {
             restResponse = clientRest.sendSync(RestRequest.getRequestForResources(
                     ApiVersionStrings.getVersionNumber(context)));
+            Log.d(TAG, "getValidAccessToken: Rest Response"+restResponse);
         } catch (IOException e) {
             exception = e;
             Log.d(TAG, "getValidAccessToken: Exception"+exception);
@@ -109,7 +125,7 @@ public class MainActivity extends SalesforceActivity {
             if (restResponse == null || !restResponse.isSuccess()) {
                 Log.d(TAG, "getValidAccessToken: Invalid REST client");
             } else {
-
+                Log.d(TAG, "getValidAccessToken: Got a success auth token");
             }
         }
 
@@ -133,7 +149,9 @@ public class MainActivity extends SalesforceActivity {
 
         @Override
         protected Void doInBackground(String... strings) {
-            getValidAccessToken();
+            Log.d(TAG, "doInBackground: /n Getting valid access token check");
+            refresh();
+            
             return null;
         }
 
@@ -141,8 +159,11 @@ public class MainActivity extends SalesforceActivity {
         protected void onPostExecute(Void aVoid) {
 
             super.onPostExecute(aVoid);
+            Log.d(TAG, "onPostExecute: TOken valid now");
             authToken = clientRest.getAuthToken();
+            Log.d(TAG, "onPostExecute: OPen web view with"+authToken);
             OpenWebView(authToken);
+
         }
 
 
@@ -153,6 +174,7 @@ public void OpenWebView(String authToken)  {
     String communityUrl= String.valueOf(clientRest.getClientInfo().communityUrl);
     System.out.println("community URL"+clientRest.getClientInfo().communityUrl);
     String url = ""+ communityUrl +"/one/one.app?sid="+ authToken+"";
+    System.out.println("URL****"+url);
     findViewById(R.id.root).setVisibility(View.VISIBLE);
     ConnectWebView=findViewById(R.id.ConnectWebViews);
     ConnectWebView.setWebViewClient(new WebViewClient(){
